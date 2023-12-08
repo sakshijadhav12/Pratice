@@ -21,7 +21,21 @@
             //dateTimeExercise.DisplayDateTime();
             //dateTimeExercise.AddValuestoDateAndTime();
             // dateTimeExercise.Conversion();
-            dateTimeExercise.DateTimeEqivalent();
+            //dateTimeExercise.DateTimeEqivalent();
+
+              StringExcercie stringExcercie = new StringExcercie();
+            //stringExcercie.CompareString();
+            //stringExcercie.SortString();
+            //stringExcercie.IsAlphabet();
+
+              DictionaryProblems problems = new DictionaryProblems();
+            //problems.Display();
+            //problems.CountFrequency();
+            ////problems.SortByKey();
+            //problems.SortByValue();
+            //problems.FindPrimeNo();
+            problems.FindEven();
+
 
         }
     }
