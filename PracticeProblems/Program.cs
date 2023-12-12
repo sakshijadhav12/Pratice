@@ -42,11 +42,12 @@ namespace PracticeProblems
 
             SearchingAndSorting searchingAndSorting = new SearchingAndSorting();
             // searchingAndSorting.Shellsort();
-           //SearhingAndSorting.bubblesort();
             //searchingAndSorting.Mergesort();
             //searchingAndSorting.CountingSort();
             //searchingAndSorting.bubblesort();
-           // searchingAndSorting.HeapSort();
+            // searchingAndSorting.HeapSort();
+           // searchingAndSorting.BogoSort();
+            searchingAndSorting.SelectionSort();
 
            //Rectangle  rectangle = new Rectangle();
            // Console.WriteLine("Enter the lenght");

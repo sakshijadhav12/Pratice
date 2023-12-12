@@ -34,31 +34,53 @@ namespace PracticeProblems
           
         }
 
-        public void bubblesort()
+        public void BogoSort()
         {
-            int[] arr = new int[] {23,67,233,45,67,4,2,1,7,0};
-            int n = arr.Length;
-            for (int i = 0; i < n - 1; i++)
+            int[] arr = new int[] { 23, 67, 233, 45, 67, 4, 2, 1, 7, 0 };
+
+            Random rand = new Random();
+
+            while (!IsSorted(arr))
             {
-                for (int j = 0; j < n - i - 1; j++)
-                {
+                Shuffle(arr, rand);
+            }
 
-                    if (arr[j] > arr[j + 1])
-                    {
-                        int temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-                    }
-                }
-
-            }  
-            
-            foreach(var element in arr)
+            Console.WriteLine("\nSorted array (after BogoSort):");
+            foreach (var element in arr)
             {
                 Console.Write(element + " ");
             }
+            Console.WriteLine();
         }
-        public void CountingSort()
+
+        public static bool IsSorted(int[] arr)
+        {
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                if (arr[i] > arr[i + 1])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static void Shuffle(int[] arr, Random rand)
+        {
+            int n = arr.Length;
+            for (int i = n - 1; i > 0; i--)
+            {
+                int j = rand.Next(0, i + 1);
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+
+
+    
+    public void CountingSort()
         {
             int[] arr = new int[] { 23, 67, 233, 45, 67, 4, 2, 1, 7, 0 };
             int max = arr.Max();
@@ -135,6 +157,37 @@ namespace PracticeProblems
 
                 Heapify(arr, n, largest);
             }
+        }
+        public void SelectionSort()
+        {
+            int[] arr = new int[] { 88,6,9,5,0,3,2,7,89,567};
+
+            int n = arr.Length;
+
+            for (int i = 0; i < n - 1; i++)
+            {
+              
+                int minIndex = i;
+
+  
+                for (int j = i + 1; j < n; j++)
+                {
+                    if (arr[j] < arr[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+                int temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+            }
+
+            Console.WriteLine("Sorted array after SelectionSort:");
+            foreach (var element in arr)
+            {
+                Console.Write(element + " ");
+            }
+            Console.WriteLine();
         }
 
 
