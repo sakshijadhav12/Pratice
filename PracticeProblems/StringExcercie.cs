@@ -102,7 +102,7 @@ namespace PracticeProblems
 
             if (char.IsLetter(inputChar))
             {
-                Console.WriteLine("\nIt is an alphabet.");
+                Console.WriteLine("It is an alphabet.");
 
                 if (char.IsUpper(inputChar))
                 {
@@ -115,7 +115,114 @@ namespace PracticeProblems
             }
             else
             {
-                Console.WriteLine("\nIt is not an alphabet.");
+                Console.WriteLine("It is not an alphabet.");
+            }
+        }
+
+        public void CompareSubString()
+        {
+            Console.WriteLine("Enter the first string:");
+            string str1 = Console.ReadLine();
+
+            Console.WriteLine("Enter the second string:");
+            string str2 = Console.ReadLine();
+
+            Console.WriteLine("Enter the starting index for the first substring:");
+            int startIndex1 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the length of the first substring:");
+            int length1 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the starting index for the second substring:");
+            int startIndex2 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the length of the second substring:");
+            int length2 = int.Parse(Console.ReadLine());
+            string subStr1 = str1.Substring(startIndex1, length1);
+            string subStr2 = str2.Substring(startIndex2, length2);
+            int result = String.Compare(subStr1, subStr2);
+            if (result < 0)
+            {
+                Console.WriteLine($"{subStr1} is less than {subStr2}");
+            }
+            else if (result > 0)
+            {
+                Console.WriteLine($"{subStr1} is greater than {subStr2}");
+            }
+            else
+            {
+                Console.WriteLine($"{subStr1} is equal to {subStr2}");
+            }
+
+        }
+
+        public void CompareLastName()
+        {
+            Console.WriteLine("Enter the full name of the first person: ");
+            string fullName1 = Console.ReadLine();
+
+            Console.WriteLine("Enter the full name of the second person: ");
+            string fullName2 = Console.ReadLine();
+
+            
+            string lastName1 = ExtractLastName(fullName1);
+            string lastName2 = ExtractLastName(fullName2);
+            string[] sortedLastNames = { lastName1, lastName2 };
+            Array.Sort(sortedLastNames);
+            Console.WriteLine("Sorted alphabetically by last name:");
+            foreach (var lastName in sortedLastNames)
+            {
+                Console.WriteLine(lastName);
+            }
+        }
+        static string ExtractLastName(string fullName)
+        {
+            string[] nameParts = fullName.Split(' ');
+            if (nameParts.Length > 1)
+            {
+                return nameParts[nameParts.Length - 1];
+            }
+            else
+            {
+           
+                return nameParts[0];
+            }
+        }
+
+        public void LengthOfSubString()
+        {
+            string[] testStrings = {
+            "aaaaaabbbbccc",
+            "BDEFGAABEF",
+            "Python",
+            
+        };
+            static int LengthOfLongestSubstring(string s)
+            {
+                int n = s.Length;
+                int maxLength = 0;
+                Dictionary<char, int> charIndexMap = new Dictionary<char, int>();
+
+                for (int end = 0, start = 0; end < n; end++)
+                {
+                    if (charIndexMap.ContainsKey(s[end]))
+                    {
+                        start = Math.Max(charIndexMap[s[end]] + 1, start);
+                    }
+
+                    maxLength = Math.Max(maxLength, end - start + 1);
+                    charIndexMap[s[end]] = end;
+                }
+
+                return maxLength;
+            }
+
+            foreach (string testString in testStrings)
+            {
+                Console.WriteLine("Original String: " + testString);
+                Console.WriteLine("Length of the longest substring without repeating characters of the said string:");
+                Console.WriteLine(LengthOfLongestSubstring(testString));
+                Console.WriteLine();
             }
         }
     }
